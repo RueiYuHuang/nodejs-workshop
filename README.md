@@ -1,1 +1,4 @@
-##MFEE27 TEST
+## MFEE27 
+​```js script
+import './my-component.js';  
+​```
