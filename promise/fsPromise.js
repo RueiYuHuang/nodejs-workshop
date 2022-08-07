@@ -17,7 +17,7 @@ async function asyncReadFile() {
         var data = await fsPromises.readFile("test.txt",'utf8')
         console.log(data); 
     } catch (err) { 
-        console.log("發生錯誤r", err); 
+        console.log("發生錯誤", err); 
     } 
 } 
   

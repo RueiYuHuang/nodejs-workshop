@@ -14,7 +14,7 @@ function readFile() {
 readFile().then((data) => {
     console.log(data);
 }).catch((err) => {
-    console.log('發生錯誤' ,err);
+    console.log('發生錯誤', err);
 })  
 
 
