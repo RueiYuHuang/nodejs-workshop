@@ -16,8 +16,8 @@ function readFile() {
 async function asyncReadFile() {
     try {
         // readFile();
-        let content =  await readFile();
-        console.log(content);
+        let data = await readFile();
+        console.log(data);
     } catch(err) {
         console.error('發生錯誤' ,err);
     }
