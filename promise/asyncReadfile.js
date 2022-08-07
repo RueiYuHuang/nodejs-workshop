@@ -19,7 +19,7 @@ async function asyncReadFile() {
         let data = await readFile();
         console.log(data);
     } catch(err) {
-        console.error('發生錯誤' ,err);
+        console.error('發生錯誤', err);
     }
     
 }
