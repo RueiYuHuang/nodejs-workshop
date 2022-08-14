@@ -1,8 +1,8 @@
 // 1. 自動取得今日日期 （可能利用 cron 排程工具 系統每日自動執行）
 // 2. 從檔案中讀取股票代碼
 const axios = require('axios');
-const moment = require('moment');
-
+const moment = require('moment'); 
+const fsPromises = require('fs').promises;
 // 開始抓資料
 // 2330 台積電
 // 2603 長榮
@@ -11,9 +11,7 @@ let queryDate = moment().format('YYYYMMDD'); //'20220814';
 // axios.get(url, 設定)
 (async () => {
   try {
-    const fs = require('fs');  
-    const fsPromises = fs.promises;
-    let data = await fsPromises.readFile('test.txt', 'utf8') 
+    let data = await fsPromises.readFile('stock.txt', 'utf8') 
     let stockNo = Number(data)
     let response = await axios.get(`https://www.twse.com.tw/exchangeReport/STOCK_DAY`, {
       params: {
