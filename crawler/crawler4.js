@@ -12,6 +12,26 @@ let queryDate = moment().format('YYYYMMDD'); //'20220814';
   try {
     let data = await fsPromises.readFile('stock.txt', 'utf8') 
     let stockNo = Number(data)
+
+    // 去查詢股票代碼的中文名稱
+    // https://www.twse.com.tw/zh/api/codeQuery?query=2330
+    let queryNameResponse = await axios.get('https://www.twse.com.tw/zh/api/codeQuery', {
+      params: {
+        query: stockNo,
+      },
+    });
+    // console.log(queryNameResponse.data);
+    let suggestions = queryNameResponse.data.suggestions;
+    console.log(queryNameResponse.data);
+    console.log(queryNameResponse.data.suggestions);
+    let suggestion = suggestions[0];
+    if (suggestion === '(無符合之代碼或名稱)') {
+      console.error(suggestion);
+      throw new Error(suggestion);
+    }
+
+    let stockName = suggestion.split('\t').pop();
+    console.log('stockName', stockName);
     let response = await axios.get(`https://www.twse.com.tw/exchangeReport/STOCK_DAY`, {
       params: {
         response: 'json',
