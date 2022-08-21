@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Stock = () => {
   const [error, setError] = useState(null);
-  const [data,setData]= useEffect([])
+  const [data,setData]= useState([])
 
   useEffect(() => {
     let getStock = async () => {
